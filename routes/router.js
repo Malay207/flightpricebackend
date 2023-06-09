@@ -24,16 +24,15 @@ const iatacode = async (name) => {
 }
 const details = async (from, to, date) => {
     const url = `https://flight-fare-search.p.rapidapi.com/v2/flight/?from=${from}&to=${to}&date=${date}&adult=1&type=economy&currency=INR`;
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': '96f03ccd7fmsh1e14f00fc71eda5p164b69jsn59f65bf274a0',
-            'X-RapidAPI-Host': 'flight-fare-search.p.rapidapi.com'
-        }
-    };
 
     try {
-        const response = await fetch(url, options);
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': '96f03ccd7fmsh1e14f00fc71eda5p164b69jsn59f65bf274a0',
+                'X-RapidAPI-Host': 'flight-fare-search.p.rapidapi.com'
+            }
+        });
         const result = await response.json();
 
         const results = await result.results;
