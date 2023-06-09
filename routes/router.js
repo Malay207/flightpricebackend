@@ -35,6 +35,7 @@ const details = async (from, to, date) => {
     try {
         const response = await fetch(url, options);
         const result = await response.json();
+
         const results = await result.results;
         return results;
     } catch (error) {
@@ -105,23 +106,9 @@ router.post('/login', [
         res.status(500).send("Some error occured");
     })
 })
-router.post('/', fetchuser, async (req, res) => {
+router.post('/prices', fetchuser, async (req, res) => {
     const { source, destination, date } = req.body;
-    try {
-        const from = await iatacode(source);
-        const to = await iatacode(destination);
-        if (from === 'error' || to === 'error') {
-            return res.status(400).json({ error: "Enter Valid Details" });
-        }
-        const result = await details(from, to, date);
-        if (result.length === 0) {
-            return res.status(400).json({ error: "No Flights Found" });
-        }
-        res.json(result);
-    } catch (error) {
-        console.log(error);
-        res.status(500).send("Some error occured");
-    }
+    console.log(source, destination, date)
 
 })
 module.exports = router;
