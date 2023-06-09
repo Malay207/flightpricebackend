@@ -30,7 +30,7 @@ const details = async (from, to, date) => {
         const response = await fetch(url, {
             method: 'GET',
             headers: {
-                'X-RapidAPI-Key': '96f03ccd7fmsh1e14f00fc71eda5p164b69jsn59f65bf274a0',
+                'X-RapidAPI-Key': '79abd8b51amsh29ccf17bd8fe3ddp1aa0cbjsn11bc3e33c41a',
                 'X-RapidAPI-Host': 'flight-fare-search.p.rapidapi.com'
             }
         });
